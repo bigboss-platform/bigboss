@@ -1,0 +1,10 @@
+{
+    "name": "@bigboss/eslint-config",
+    "version": "0.0.1",
+    "private": true,
+    "main": "index.mjs",
+    "files": ["index.mjs"],
+    "peerDependencies": {
+        "eslint": ">=9"
+    }
+}
