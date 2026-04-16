@@ -1,10 +1,21 @@
 # TASK-02 — Backend: Complete API
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-01  
 **Blocks:** TASK-03, TASK-08
 
 ---
+
+## Read Before Starting
+
+- `app/modules/auth/router.py`, `service.py`, `schemas.py`, `repository.py`
+- `app/modules/end_users/router.py`, `service.py`, `schemas.py`, `repository.py`
+- `app/modules/orders/router.py`, `service.py`, `schemas.py`, `repository.py`
+- `app/modules/menus/router.py`, `service.py`, `schemas.py`
+- `app/core/config.py`
+- `app/shared/base_schema.py`, `app/shared/enums.py`
+
+Do NOT read tenant_admins, tenants, or migration files — not needed for this task.
 
 ## Goal
 

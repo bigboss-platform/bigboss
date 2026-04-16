@@ -13,8 +13,8 @@ AI agents: read this file first, then open only the task files relevant to your 
 
 | # | File | Title | Status |
 |---|---|---|---|
-| 01 | TASK-01-[PENDING]-backend-boot-and-migrations.md | Backend — Boot, Migrations & Seed | PENDING |
-| 02 | TASK-02-[PENDING]-backend-api-complete.md | Backend — Complete API | PENDING |
+| 01 | TASK-01-[DONE]-backend-boot-and-migrations.md | Backend — Boot, Migrations & Seed | DONE |
+| 02 | TASK-02-[DONE]-backend-api-complete.md | Backend — Complete API | DONE |
 | 03 | TASK-03-[PENDING]-fastfood-menu-experience.md | FastFood App — Menu Experience | PENDING |
 | 04 | TASK-04-[PENDING]-fastfood-cart.md | FastFood App — Cart Drawer | PENDING |
 | 05 | TASK-05-[PENDING]-fastfood-auth-flow.md | FastFood App — OTP Auth Flow | PENDING |
