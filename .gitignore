@@ -1,3 +1,8 @@
+# App repos tracked separately
+apps/fastfood-app/
+apps/fastfood-backoffice/
+backend/bigboss-api/
+
 # Dependencies
 node_modules
 .pnpm-store
