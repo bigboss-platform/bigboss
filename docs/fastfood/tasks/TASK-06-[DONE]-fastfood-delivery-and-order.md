@@ -1,6 +1,6 @@
 # TASK-06 — FastFood App: Delivery Options & Place Order
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-05  
 **Blocks:** TASK-07
 
