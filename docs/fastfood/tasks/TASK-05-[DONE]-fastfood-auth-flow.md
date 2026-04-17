@@ -1,6 +1,6 @@
 # TASK-05 — FastFood App: OTP Auth Flow
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-04  
 **Blocks:** TASK-06
 
