@@ -1,10 +1,20 @@
 # TASK-03 — FastFood App: Menu Experience
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-02  
 **Blocks:** TASK-04
 
 ---
+
+## Read Before Starting
+
+- `apps/fastfood-app/app/[tenant-slug]/layout.tsx`
+- `apps/fastfood-app/app/[tenant-slug]/page.tsx`
+- `apps/fastfood-app/feature/menus/` — read all existing files in this folder
+- `apps/fastfood-app/feature/loading/` — read all existing files
+- `apps/fastfood-app/app/globals.css` — design tokens and existing keyframes
+
+Do NOT read cart, auth, or orders features — not needed for this task.
 
 ## Goal
 
