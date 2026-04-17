@@ -1,6 +1,6 @@
 # TASK-07 — FastFood App: Active Order View
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-06  
 **Blocks:** TASK-13
 
