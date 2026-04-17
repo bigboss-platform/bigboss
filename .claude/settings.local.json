@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm type-check *)",
+      "Bash(pnpm install *)",
+      "Bash(npx tsc *)",
+      "Bash(pnpm test:unit --run)",
+      "Bash(pnpm test:ci)",
+      "Bash(pnpm lint *)",
+      "Bash(node -e \"require.resolve\\('globals'\\)\")"
+    ]
+  }
+}
