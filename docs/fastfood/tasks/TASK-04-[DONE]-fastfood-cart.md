@@ -1,6 +1,6 @@
 # TASK-04 — FastFood App: Cart Drawer
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-03  
 **Blocks:** TASK-05
 
