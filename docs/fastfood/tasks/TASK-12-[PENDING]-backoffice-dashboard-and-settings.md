@@ -6,6 +6,15 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-backoffice/feature/dashboard/` — read all existing files
+- `apps/fastfood-backoffice/feature/settings/` — read all existing files
+- `apps/fastfood-backoffice/feature/shared/lib/api-client.ts`
+- `apps/fastfood-backoffice/feature/shared/components/toast.component.tsx`
+
+Do NOT read orders, chef-view, menus, or auth features.
+
 ## Goal
 
 The dashboard shows real business stats pulled from the API. The settings module allows tenant admins to update all business configuration — contact info, delivery rules, payment instructions, and tenant theme — without any code change or redeploy.

@@ -6,6 +6,15 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-app/feature/cart/` — read all existing files
+- `apps/fastfood-app/feature/shared/components/drawer.component.tsx`
+- `apps/fastfood-app/feature/menus/components/menu-experience-client.component.tsx`
+- `apps/fastfood-app/app/globals.css` — existing keyframe animation names
+
+Do NOT read auth, orders, or loading features.
+
 ## Goal
 
 The cart drawer opens when the user taps "Agregar", manages quantities and per-item notes, shows totals, and has a checkout button that triggers the auth flow. The drawer is accessible and keyboard-navigable.

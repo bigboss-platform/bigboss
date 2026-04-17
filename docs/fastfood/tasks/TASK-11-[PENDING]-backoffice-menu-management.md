@@ -6,6 +6,14 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-backoffice/feature/menus/` — read all existing files
+- `apps/fastfood-backoffice/feature/shared/lib/api-client.ts`
+- `apps/fastfood-backoffice/feature/shared/components/toast.component.tsx`
+
+Do NOT read orders, chef-view, dashboard, settings, or auth features.
+
 ## Goal
 
 Tenant admins can manage the full menu from the back office: create and reorder sections, add and edit items with photos, toggle item availability in real time, and soft-delete anything. Changes are reflected immediately in the FastFood app.

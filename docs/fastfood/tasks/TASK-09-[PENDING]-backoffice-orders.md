@@ -6,6 +6,15 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-backoffice/feature/orders/` — read all existing files
+- `apps/fastfood-backoffice/feature/auth/hooks/use-admin-session.hook.ts`
+- `apps/fastfood-backoffice/feature/shared/lib/api-client.ts`
+- `apps/fastfood-backoffice/feature/shared/components/toast.component.tsx` (if it exists)
+
+Do NOT read menus, dashboard, settings, or chef-view features.
+
 ## Goal
 
 Staff can see all incoming orders in real time, filter by status, select an order to view its full detail, advance its status, and update all payment information. This is the primary daily-use screen.

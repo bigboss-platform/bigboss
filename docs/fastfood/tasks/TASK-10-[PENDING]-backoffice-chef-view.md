@@ -6,6 +6,14 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-backoffice/feature/chef-view/` — read all existing files
+- `apps/fastfood-backoffice/feature/orders/services/order.service.ts`
+- `apps/fastfood-backoffice/feature/shared/lib/api-client.ts`
+
+Do NOT read menus, dashboard, settings, or auth features.
+
 ## Goal
 
 The chef view displays active orders as large, easy-to-read cards on a kitchen screen. Staff can advance order status with a single tap. Cards auto-refresh. This screen is designed to be used on a tablet mounted in the kitchen.

@@ -6,6 +6,14 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-app/feature/orders/` — read all existing files
+- `apps/fastfood-app/feature/menus/components/menu-experience-client.component.tsx`
+- `apps/fastfood-app/feature/auth/hooks/use-auth.hook.ts`
+
+Do NOT read cart, loading, or backend files.
+
 ## Goal
 
 After placing an order the user sees a live status view. The status updates automatically by polling. The user can contact the business via WhatsApp. The view persists across page refreshes.

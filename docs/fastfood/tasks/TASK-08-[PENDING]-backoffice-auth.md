@@ -6,6 +6,15 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-backoffice/feature/auth/` — read all existing files
+- `apps/fastfood-backoffice/feature/shared/` — read all existing files
+- `apps/fastfood-backoffice/app/(dashboard)/layout.tsx`
+- `apps/fastfood-backoffice/app/middleware.ts` (if it exists)
+
+Do NOT read orders, menus, dashboard, or settings features.
+
 ## Goal
 
 The back office login page works against the real API. All dashboard routes are protected — unauthenticated users are redirected to login. The session persists across page refreshes. Logging out clears everything.

@@ -6,6 +6,14 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-app/feature/orders/` — read all existing files
+- `apps/fastfood-app/feature/cart/hooks/use-cart.hook.ts`
+- `apps/fastfood-app/feature/auth/hooks/use-auth.hook.ts`
+
+Do NOT read menus, loading, or backend files.
+
 ## Goal
 
 After authentication, the user selects pickup or delivery, optionally enters an address with map confirmation, sees the delivery cost, reviews the order bill, and places the order. A confirmed order ID is stored for the active order view.

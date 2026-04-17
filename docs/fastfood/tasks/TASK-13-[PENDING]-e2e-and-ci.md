@@ -6,6 +6,17 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-app/tests/e2e/` — read all existing spec files
+- `apps/fastfood-backoffice/tests/e2e/` — read all existing spec files
+- `backend/bigboss-api/.github/workflows/` (if exists)
+- `apps/fastfood-app/.github/workflows/` (if exists)
+- `apps/fastfood-backoffice/.github/workflows/` (if exists)
+- `backend/bigboss-api/.pre-commit-config.yaml`
+
+Do NOT read feature code — this task is tests and CI only.
+
 ## Goal
 
 All critical user paths pass in Playwright E2E tests against a staging environment with seeded data. The CI pipelines for all three repos run green. The gate system (pre-commit → CI → E2E) is fully operational.

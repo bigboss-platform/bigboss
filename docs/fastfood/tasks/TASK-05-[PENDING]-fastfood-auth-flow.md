@@ -6,6 +6,14 @@
 
 ---
 
+## Read Before Starting
+
+- `apps/fastfood-app/feature/auth/` — read all existing files
+- `apps/fastfood-app/feature/cart/hooks/use-cart.hook.ts`
+- `apps/fastfood-app/feature/cart/components/cart-drawer.component.tsx`
+
+Do NOT read menus, loading, or orders features.
+
 ## Goal
 
 When an unauthenticated user tries to check out, they are shown the OTP phone flow. On success the session is stored and they continue to the delivery options step. The flow handles all error states.
