@@ -1,6 +1,6 @@
 # TASK-08 — Back Office: Auth & Route Protection
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-02  
 **Blocks:** TASK-09
 
