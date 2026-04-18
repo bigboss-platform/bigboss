@@ -123,6 +123,49 @@ Rules:
 - API versioning is in the URL prefix (`/api/v1/`)
 - Never use verbs in URLs — use HTTP methods instead: `POST /orders` not `GET /create-order`
 
+### Relationship Modules — Domain Noun Rule
+
+When two resources have a relationship (e.g. a user subscribes to a newsletter, a member joins a gym), **never add endpoints to the existing resource modules**. Instead, identify the domain noun that the relationship produces and give it its own module with standard CRUD endpoints.
+
+| Domain | Wrong — pollutes existing module | Right — new domain noun module |
+|--------|----------------------------------|-------------------------------|
+| Gym | `POST /users/:id/join-gym` | `POST /memberships` |
+| Uber-like | `POST /drivers/:id/accept-trip` | `POST /trips`, `POST /assignments` |
+| Medical | `POST /doctors/:id/see-patient` | `POST /appointments` |
+| Newspaper | `POST /users/:id/subscribe` | `POST /subscriptions` |
+| Any | `POST /users/:id/pay` | `POST /payments` |
+
+The relationship's foreign keys (`user_id`, `plan_id`, etc.) are fields on the new resource — not URL params on the parent.
+
+```
+# WRONG — bolts subscription logic onto the User module
+POST   /users/{user_id}/subscribe
+DELETE /users/{user_id}/unsubscribe
+
+# CORRECT — Subscription is a first-class resource
+POST   /api/v1/subscriptions                         ← create (subscribe)
+GET    /api/v1/subscriptions/{subscription_id}       ← read (check status)
+PATCH  /api/v1/subscriptions/{subscription_id}       ← update (change plan)
+DELETE /api/v1/subscriptions/{subscription_id}       ← delete (unsubscribe)
+GET    /api/v1/users/{user_id}/subscriptions         ← list user's subscriptions (read collection)
+```
+
+**Naming rule:** the module name is a **domain noun**, never a verb phrase. `Subscription` not `UserCanSubscribeToNewspaper`. `Membership` not `UserCanJoinGym`.
+
+### Action Sub-Routes — State Transitions
+
+Some state transitions carry business meaning that goes beyond a simple field update. Give these a named sub-route rather than forcing them into `PATCH`:
+
+```
+POST /api/v1/subscriptions/{id}/pause
+POST /api/v1/subscriptions/{id}/resume
+POST /api/v1/trips/{id}/cancel
+POST /api/v1/appointments/{id}/confirm
+POST /api/v1/orders/{id}/cancel
+```
+
+**Rule:** use an action sub-route when the transition has side effects (emails, notifications, billing events) or when the state machine makes the transition name semantically meaningful beyond "update a field".
+
 ### HTTP Methods
 
 | Method | Use |

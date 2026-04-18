@@ -177,11 +177,67 @@ When a new tenant is created, the platform automatically:
 
 ### Data Monetization Architecture
 
-All data written to tenant schemas is eligible for aggregation into the `analytics` schema. This process:
-- Runs as a nightly background job (Celery)
-- Anonymizes or aggregates before writing to `analytics`
-- Requires tenants to accept BigBoss Terms of Service that explicitly state this usage
-- Must comply with GDPR and CCPA — consent flags are stored on the `tenants` table
+BigBoss runs two parallel business models: SaaS subscription revenue from tenants, and data asset revenue from aggregate behavioral data. The SaaS revenue funds operations. The data is the long-term asset.
+
+#### Monetization Roadmap
+
+| Phase | Timeline | Strategy |
+|-------|----------|----------|
+| **Short term** | 0–2 years | Sell aggregate analytics **back to tenants** as a premium tier — benchmarks, retention comparisons, demand patterns |
+| **Medium term** | 2–5 years | Anonymized cross-vertical consumer behavior sold to market research firms and industry associations |
+| **Long term** | 5+ years | Become a regulated data broker in specific verticals at meaningful scale |
+
+At early scale (fewer than ~50 active tenants), external data sales are not viable. The short-term play is tenant-facing analytics: "your gym retains 23% better than similar gyms on the platform." Tenants will pay for this.
+
+#### Consent Table — Required in Every Tenant Schema
+
+Every tenant schema must include this table from day one:
+
+```sql
+CREATE TABLE data_consent (
+    id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    end_user_id    UUID NOT NULL REFERENCES end_users(id),
+    consent_type   TEXT NOT NULL,   -- 'analytics', 'cross_tenant', 'third_party'
+    granted        BOOLEAN NOT NULL,
+    granted_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
+    revoked_at     TIMESTAMPTZ,
+    tos_version    TEXT NOT NULL    -- which TOS version the user agreed to
+);
+```
+
+When a user revokes consent, the ETL pipeline must exclude all historical records for that user. This is a GDPR right-to-erasure obligation, not optional.
+
+#### ETL and Analytics Pipeline — Build From Day One
+
+The analytics pipeline must be built at project start, even if it runs nightly against 50 rows. Retrofitting it later requires re-modelling events, adding missing consent records, and making historical data untrustworthy.
+
+```
+Tenant schemas (Postgres)
+        │
+        │  Celery nightly ETL job
+        │  — applies consent filters
+        │  — anonymizes PII (hashes IDs, strips names/emails)
+        │  — aggregates into read-optimized shapes
+        ↓
+analytics schema (same Postgres instance, or Bigquery/Snowflake at scale)
+        ├── anonymized_events         ← raw behavioral events, no PII
+        ├── behavioral_segments       ← user cohorts and patterns
+        ├── tenant_benchmarks         ← cross-tenant performance comparisons
+        └── cross_vertical_signals    ← goldmine at scale — requires 'cross_tenant' consent
+```
+
+#### Vertical-Specific Compliance Warnings
+
+| Vertical | Regulation | What this means |
+|----------|-----------|-----------------|
+| Medical / Dental | HIPAA (US) | Health records require HIPAA-compliant infrastructure (BAA agreements, specific technical safeguards). De-identification requires Safe Harbor or Expert Determination standard — "getting consent" is not sufficient. Treat as a **separate product with separate compliance posture**. |
+| Gym (biometrics) | GDPR, CCPA, BIPA (Illinois) | Biometric data (body measurements, body fat %) requires explicit opt-in and right to deletion. |
+| Uber-like (location) | GDPR, CCPA | Precise location is a regulated data category. Requires explicit opt-in separate from general TOS. |
+| Fast food / Retail | GDPR, CCPA | Lightest burden — standard consent and right to erasure. |
+
+> **Hard rule:** Do not onboard medical or dental tenants until legal counsel has reviewed the HIPAA compliance posture and signed off on the data pipeline. Getting this wrong is existential risk.
+
+All data written to tenant schemas is eligible for aggregation into the `analytics` schema subject to the consent checks above. This process requires tenants to accept BigBoss Terms of Service that explicitly state this usage. Consent flags are stored on the `tenants` table (platform level) and per-user on the `data_consent` table (tenant schema level).
 
 > **Legal note:** Data monetization terms must be reviewed by legal counsel before any production tenant is onboarded.
 
