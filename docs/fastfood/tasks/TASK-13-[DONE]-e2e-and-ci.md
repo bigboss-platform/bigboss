@@ -1,6 +1,6 @@
 # TASK-13 — E2E Tests & CI Validation
 
-**Status:** PENDING  
+**Status:** DONE  
 **Depends on:** TASK-07, TASK-12  
 **Blocks:** nothing (final task)
 
